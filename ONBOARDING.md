@@ -32,10 +32,15 @@ Apresente-se ao usuário com esta mensagem exata:
 >
 > Vou te guiar para configurar seu assistente de IA para comunicar no seu tom — sem precisar baixar nada.
 >
-> Primeira pergunta: você já tem seu arquivo `voice-guide.md` gerado e validado?"
+> Primeira pergunta: qual é o seu momento com o Voice Guide?
+>
+> 1. **Ainda não tenho** — preciso criar do zero
+> 2. **Já tenho pronto** — quero instalar nas plataformas
+> 3. **Já está instalado** — quero atualizar ou re-sincronizar"
 
-- Se a resposta for **sim** (ou equivalente): vá para o **CAMINHO B**
-- Se a resposta for **não** (ou equivalente): vá para o **CAMINHO A**
+- Se a resposta for **1** (ou equivalente — não tem guide): vá para o **CAMINHO A**
+- Se a resposta for **2** (ou equivalente — tem guide, não instalou): vá para o **CAMINHO B**
+- Se a resposta for **3** (ou equivalente — já tem instalado): vá para o **CAMINHO C**
 
 ---
 
@@ -231,6 +236,93 @@ Instrua:
 
 ---
 
+## CAMINHO C — Atualizando o Voice Guide
+
+### C1 — Diagnóstico do tipo de atualização
+
+Pergunte ao usuário:
+
+> "Que tipo de atualização você precisa?
+>
+> 1. **Ajuste pontual** — mudar uma regra específica (vocabulário, anti-padrão, modulação de um contexto)
+> 2. **Re-extração completa** — novo corpus de mensagens, guide novo do zero
+> 3. **Re-sincronizar plataformas** — o guide já está atualizado em `~/.claude/voice-guide.md`, só preciso propagar"
+
+Aguarde a resposta e vá para C2, C3 ou C4 conforme a escolha.
+
+### C2 — Ajuste pontual
+
+1. Leia o conteúdo atual de `~/.claude/voice-guide.md`
+
+2. Apresente um resumo das seções encontradas e pergunte:
+   > "Encontrei seu Voice Guide. O que você quer ajustar? Descreva a mudança — ex: 'Adicionar a palavra X ao vocabulário', 'Remover o anti-padrão Y', 'Ajustar tom do estrato cliente'."
+
+3. Receba a instrução. Aplique **cirurgicamente** no arquivo:
+   - Edite apenas a(s) seção(ões) afetadas
+   - Não toque no restante do guide
+   - Mostre o trecho ANTES e DEPOIS para confirmação do usuário
+
+4. Após confirmação, pergunte:
+   > "Quer propagar essa mudança para as plataformas instaladas?
+   >
+   > **Nota:** Claude Code já lê `~/.claude/voice-guide.md` automaticamente a cada sessão — nenhuma ação necessária lá.
+   > Para as demais, me diz quais você tem ativas: Claude.ai, ChatGPT/Gemini, OpenClaw."
+
+5. Para cada plataforma confirmada, execute a seção correspondente: B3 (OpenClaw), B4 (Claude.ai) ou B5 (ChatGPT/Gemini).
+
+### C3 — Re-extração completa
+
+Use quando o corpus mudou significativamente ou o guide ficou defasado (voz evoluiu nos últimos 6-12 meses).
+
+1. Informe o usuário e faça backup:
+   - Copie `~/.claude/voice-guide.md` para `~/.claude/voice-guide-backup-[DATA].md`
+   - Confirme: *"Backup salvo em `~/.claude/voice-guide-backup-[DATA].md`."*
+
+2. Pergunte se já tem o novo corpus coletado:
+   > "Você já tem o novo material coletado (mensagens, e-mails, posts recentes)?"
+
+   - Se **não**: busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01-coleta.md` e guie a coleta.
+   - Se **sim**: avance direto para o próximo passo.
+
+3. Extração com IA:
+   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/02-prompt-mestre.md`
+   - Instrua: *"Use este prompt com seu novo corpus. Me avisa quando tiver o guide gerado."*
+   - Aguarde confirmação.
+
+4. Validação:
+   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/03-validacao.md`
+   - Aguarde nota de validação. Se nota < 8, oriente iteração antes de prosseguir.
+
+5. Após validação aprovada:
+   - Peça o novo conteúdo do guide
+   - Salve em `~/.claude/voice-guide.md` (sobrescreve o anterior)
+   - Confirme: *"Novo guide ativo. Backup do anterior em `~/.claude/voice-guide-backup-[DATA].md`."*
+
+6. Pergunte sobre re-sincronização:
+   > "Quais plataformas você tem o guide instalado? (Claude Code já está atualizado automaticamente)"
+
+7. Para cada plataforma confirmada, execute B3, B4 ou B5.
+
+### C4 — Re-sincronização de plataformas
+
+Use quando `~/.claude/voice-guide.md` já está atualizado e você só precisa propagar.
+
+1. Leia `~/.claude/voice-guide.md` e confirme ao usuário que o arquivo foi encontrado.
+
+2. Pergunte:
+   > "Em quais plataformas você quer propagar o guide atualizado?
+   >
+   > **Claude Code** já lê o arquivo automaticamente — nenhuma ação necessária.
+   > Para as demais:
+   >
+   > 1. OpenClaw / Open WebUI
+   > 2. Claude.ai Pro
+   > 3. ChatGPT ou Gemini"
+
+3. Execute as seções de instalação correspondentes às plataformas escolhidas: B3 (OpenClaw), B4 (Claude.ai) ou B5 (ChatGPT/Gemini).
+
+---
+
 ## PASSO FINAL — Resumo e próximos passos
 
 Após concluir todas as plataformas escolhidas, mostre ao usuário:
@@ -244,9 +336,8 @@ Após concluir todas as plataformas escolhidas, mostre ao usuário:
 > - Claude.ai: inicie uma conversa nova e peça pra redigir qualquer coisa
 > - ChatGPT/Gemini: abra o GPT/Gem criado e peça uma mensagem
 >
-> **Para manter atualizado:**
-> - Edite `~/.claude/voice-guide.md` quando quiser ajustar o guide
-> - Revalide o guide a cada 6-12 meses (seu jeito de comunicar evolui)
-> - Para atualizar as outras plataformas, basta repetir a instalação
+> **Para atualizar:**
+> - Revalide seu Voice Guide a cada 6-12 meses (sua voz evolui com o tempo)
+> - Para qualquer ajuste ou re-sincronização: cole o Magic Prompt novamente e escolha a opção **3** no diagnóstico
 >
 > Bora usar!"
