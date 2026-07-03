@@ -123,6 +123,7 @@ Cada camada da voz tem um teto realista. Saber onde parar evita meses de polimen
 - [ ] Modulação por contexto tem ao menos 3 estratos diferenciados
 - [ ] Typos descritos são só de teclado — nenhuma gramática errada deliberada
 - [ ] Rodei a Camada 1 (juiz LLM) E a Camada 2 (teste humano cego, conversas antigas)
+- [ ] Chequei VARIÂNCIA: o clone gera SEMPRE o mesmo padrão pro mesmo traço (reticências, caixa inicial, comprimento) em mensagens diferentes? Se sim, é colapso pra ponto fixo — o real varia, e clone que não varia é detectável mesmo com as médias certas e nota alta na rubrica
 
 ## Re-validação periódica
 

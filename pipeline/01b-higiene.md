@@ -50,6 +50,17 @@ São **idiomas diferentes**. Voz digitada é curta, fragmentada, abreviada. Voz 
 - O áudio transcrito continua útil, mas pra outra coisa: entender COMO você raciocina em voz alta (o motor retórico do passo 02). Ele informa o movimento, não a superfície.
 - **Nunca** misture os dois no mesmo balde de contagem de caracteres/pontuação. Misturar é o erro nº2 mais comum do pipeline inteiro.
 
+## Uniformidade é fingerprint (meça a distribuição, não só a média)
+
+Voz humana **VARIA** — o mesmo traço (comprimento de mensagem, tipo de reticência, capitalização da primeira letra, densidade de emoji) muda de mensagem pra mensagem. IA, por default, converge pra um ponto fixo: sempre a mesma pontuação, sempre a mesma caixa, sempre o mesmo comprimento. Esse colapso pra um valor único é, por si só, um fingerprint — **mesmo que o valor escolhido esteja certo na média**.
+
+Na prática:
+
+- Ao extrair cada traço do seu corpus, não anote só um número (ex: "60% das msgs começam minúsculas") — anote a **FAIXA** em que ele varia por contexto (ex: "entre 40% e 70% conforme o estrato").
+- Traços com mais de uma forma real (ex: reticências `..` e `...`) entram no guide com a **proporção de cada forma** e a instrução explícita de ALTERNAR — nunca "use X" binário.
+- O prompt-mestre (passo 02) deve instruir o modelo a operar **dentro da faixa, variando de mensagem pra mensagem**, não a aplicar a mesma taxa fixa sempre.
+- Um traço autêntico do dono da voz, aplicado 100% das vezes pelo clone, vira detector do clone.
+
 ## Como executar a higiene sem código
 
 Você não precisa programar. Depois de colar os `.txt` (ou trechos) na IA, peça:
