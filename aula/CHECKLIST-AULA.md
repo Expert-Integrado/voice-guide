@@ -17,8 +17,9 @@
 | `README.md` | Mapa do repo, ordem de leitura | ✅ |
 | `00-voice-vs-brand.md` | Diferença didática Voice × Brand | ✅ |
 | `01-coleta.md` | Como coletar material (WhatsApp/Zoom/e-mail) | ✅ |
-| `02-prompt-mestre.md` | **O coração** — prompt pronto pra colar no Claude/GPT | ✅ |
-| `03-validacao.md` | Protocolo A/B simplificado | ✅ |
+| `01b-higiene.md` | **Método v2** — higiene de corpus (5 contaminações + janela pré-IA + separação por modalidade) | ✅ |
+| `02-prompt-mestre.md` | **O coração** — prompt pronto pra colar no Claude/GPT (agora com motor retórico + few-shots) | ✅ |
+| `03-validacao.md` | Validação em 2 camadas (juiz LLM + teste humano com viés de memória) + critério de parada | ✅ |
 | `04-ativacao.md` | Como plugar em Claude.ai/Code/ChatGPT/Gemini/n8n | ✅ |
 | `templates/voice-guide-template.md` | Esqueleto pessoal | ✅ |
 | `templates/brand-voice-template.md` | Esqueleto institucional | ✅ |
@@ -52,7 +53,7 @@
 - Slide 2 (Voice × Brand) — 2min, ponto-chave: empresa solo colapsa em 1 só
 - Slide 3 (Por que importa) — 2min, "CEO não escala, mensagem sim"
 - Slide 4 (Anatomia) — 3min, mostrar os 6 componentes
-- Slide 5 (Pipeline 4 passos) — 3min
+- Slide 5 (Pipeline — método v2: coleta → higiene → extração → validação 2 camadas) — 3min. Ênfase: a higiene é a etapa que quase todo mundo pula e é a mais importante
 - Slide 6 (Onde plugar) — 2min, ênfase: voice guide é UNIVERSAL
 - Slide 7 (Demo antes/depois) — 3min, leia os 2 textos em voz alta, compara
 - Slide 8 (Lição de casa) — 3min, mostra o link, pede que clonem

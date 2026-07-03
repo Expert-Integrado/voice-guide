@@ -69,6 +69,8 @@ Quando a skill ativa:
 - NAO suavizar tom quando o guide diz frontalidade
 - NAO adicionar saudacoes/fechamentos genericos quando guide proibe
 - NAO redigir sem ter lido o guide na sessao corrente
+- NAO cair no default de LLM: concordar/validar/resolver com CTA gentil. Se o guide tem uma secao 0 (MOTOR), aplique o movimento dela ANTES de tudo — a pessoa real fricciona (devolve pergunta, pede evidencia, qualifica) onde a IA concorda. Concordancia lisa e o fingerprint nº1 de texto de IA.
+- NAO forjar erro de gramatica pra "parecer humano". Autenticidade e so erro de teclado (minuscula inicial, letra trocada), nunca portugues errado de proposito.
 
 ## Exemplo de fluxo
 
@@ -101,5 +103,5 @@ Use abordagem alternativa: ative o Voice Guide como Project Knowledge / Custom I
 
 ---
 
-**Versao:** 0.1
+**Versao:** 2.0 (metodo v2 — guide construido com higiene de corpus + motor retorico + few-shots + validacao 2 camadas)
 **Compativel com:** Claude Code 1.0+, Claude Desktop com skill plugin

@@ -22,7 +22,7 @@ O corpus precisa cobrir **contextos diferentes** pra capturar como você modula 
 | **Equipe interna** | Briefings, cobranças, alinhamentos no WhatsApp/Slack |
 | **Parceiro / network** | Troca técnica, indicação, conversa com colega de área |
 | **Pessoal / íntimo** | (opcional, só se for fazer voice MUITO pessoal) Família, amigos próximos |
-| **Áudio falado** | Transcrições de Zoom, lives, podcasts — registro oral é DIFERENTE do escrito |
+| **Áudio falado** | Transcrições de Zoom, lives, podcasts — registro oral é DIFERENTE do escrito, guarde SEPARADO (ver "separação por modalidade" abaixo) |
 
 ## Fontes de coleta
 
@@ -43,9 +43,9 @@ O corpus precisa cobrir **contextos diferentes** pra capturar como você modula 
 
 **Limpeza recomendada antes de usar:**
 - Remover mensagens do outro lado (você quer SUA voz, não a dele) — abra no editor, mantenha só linhas que começam com seu nome
-- Remover mensagens muito curtas ("ok", "kkk", "👍") — não ajudam
-- Manter mensagens de 20+ caracteres
 - **Anonimizar**: trocar nomes de clientes/leads por placeholders ([CLIENTE], [LEAD]) antes de colar em IA externa
+
+> **Cuidado — não corte as mensagens curtas ainda.** Ao contrário do que se pensa, mensagens de 1 linha ("fechou", "bora", "ta bom") são o CORE da voz digitada de quase todo mundo — a mediana real costuma ficar em ~20 caracteres, não em parágrafos. Se você filtrar tudo abaixo de 20 chars agora, joga fora justamente o padrão mais característico e ainda infla artificialmente o comprimento médio. Deixe a limpeza fina pro passo [`01b-higiene.md`](01b-higiene.md), que separa o que é ruído do que é voz de verdade.
 
 ### 2. Zoom — transcrição de reuniões
 
@@ -62,7 +62,9 @@ O corpus precisa cobrir **contextos diferentes** pra capturar como você modula 
 **Limpeza:**
 - Identifique seus blocos de fala (você é "Eric:" ou "Speaker 1:")
 - Mantenha apenas o que VOCÊ falou
-- Áudio é registro DIFERENTE de texto — esses trechos vão alimentar a parte de "como você fala falando", não escrevendo
+- **Salve o áudio transcrito num arquivo SEPARADO do texto digitado** (ex: `zoom-transcripts.txt`, não misturado com `whatsapp-*.txt`)
+
+> **Separação por modalidade — regra de ouro.** Voz **falada** e voz **digitada** são idiomas diferentes: a falada é longa, disfluente, cheia de "né?/sabe?"; a digitada é curta, fragmentada, abreviada. Se você mistura os dois no mesmo balde, contamina as estatísticas de comprimento e pontuação — o guide sai com muleta oral que você não digita. Se o guide vai ser usado pra **texto** (WhatsApp, e-mail, post), treine só com texto; o áudio entra depois, pra informar o *movimento* (como você raciocina em voz alta), não a superfície. Detalhe no passo [`01b-higiene.md`](01b-higiene.md).
 
 ### 3. E-mail — exportar enviados
 
@@ -125,13 +127,14 @@ Pra Brand Voice (institucional), foque em:
    ```
 3. Não junte tudo num arquivo só — o prompt mestre vai pedir pra você identificar contextos
 
-## Checklist final antes de extrair
+## Checklist final antes de higienizar
 
 - [ ] Tenho material de pelo menos 3 contextos diferentes
 - [ ] Pelo menos 200 mensagens/trechos
-- [ ] Removi mensagens curtas demais (< 20 chars)
+- [ ] Mantive as mensagens curtas (elas são o core da voz digitada — a limpeza fina é no passo 01b)
+- [ ] Separei o áudio transcrito num arquivo à parte do texto digitado
 - [ ] Anonimizei nomes de clientes/leads
 - [ ] Removi informações sensíveis (CPF, senhas, valores específicos confidenciais)
-- [ ] Tenho pelo menos 1 fonte de áudio transcrito (se quiser cobrir registro oral)
+- [ ] Se possível, priorizei uma janela PRÉ-IA (antes de eu redigir com assistente)
 
-Pronto. Próximo passo: [`02-prompt-mestre.md`](02-prompt-mestre.md) — colar isso na IA e gerar o guide.
+Pronto. Próximo passo: [`01b-higiene.md`](01b-higiene.md) — a etapa mais importante: limpar o corpus antes de extrair.

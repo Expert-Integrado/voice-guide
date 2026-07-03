@@ -50,12 +50,13 @@ Apresente-se ao usuário com esta mensagem exata:
 
 Diga ao usuário:
 
-> "Ótimo! Antes de instalar, precisamos criar o seu Voice Guide. O processo tem 4 etapas:
+> "Ótimo! Antes de instalar, precisamos criar o seu Voice Guide. O processo tem 5 etapas:
 >
 > 1. **Conceito** — entender o que é Voice Guide vs Brand Voice
 > 2. **Coleta** — reunir mensagens e textos seus
-> 3. **Extração** — gerar o guide com IA
-> 4. **Validação** — testar se ficou fiel ao seu jeito
+> 3. **Higiene** — limpar o corpus (a etapa mais importante: tirar o que NÃO é a sua voz)
+> 4. **Extração** — gerar o guide com IA (com o motor retórico + exemplos reais)
+> 5. **Validação** — testar em 2 camadas se ficou fiel ao seu jeito
 >
 > Quer começar pela etapa 1 agora?"
 
@@ -81,29 +82,46 @@ Após apresentar, pergunte:
 
 > "Você já tem o material coletado (mensagens, e-mails, posts)? Me diz o que você tem disponível."
 
-Guie conforme a resposta (ajude a identificar fontes se o aluno não souber). Quando o aluno confirmar que tem material suficiente, avance.
+Guie conforme a resposta (ajude a identificar fontes se o aluno não souber). Lembre o aluno de **separar o áudio transcrito do texto digitado** (são idiomas diferentes) e, se ele usa IA pra escrever há um tempo, de **priorizar uma janela pré-IA**. Quando o aluno confirmar que tem material suficiente, avance.
 
-### A4 — Etapa 3: Extração com IA
+### A3b — Etapa 3: Higiene de corpus (a MAIS importante)
+
+Busque e apresente o conteúdo de:
+`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01b-higiene.md`
+
+Explique ao aluno, em linguagem simples, por que essa etapa é crítica:
+
+> "Essa é a etapa que quase todo mundo pula — e é a mais importante. Antes de gerar o guide, a gente precisa tirar do seu material tudo que NÃO foi você digitando espontaneamente: transcrição de áudio, texto que você escreveu com ajuda de IA, mensagens de outros atendentes no mesmo número, bots e automações. Corpus sujo gera um clone falso, e ninguém percebe porque parece certo."
+
+Se o aluno colar trechos do material, **você** roda a detecção das 5 fontes de contaminação e devolve a lista pra ele revisar (nunca remova sem revisão humana). Quando o corpus estiver limpo e separado por contexto, avance.
+
+### A4 — Etapa 4: Extração com IA
 
 Busque e apresente o conteúdo de:
 `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/02-prompt-mestre.md`
 
 Após apresentar, instrua:
 
-> "Agora você vai usar esse prompt no Claude.ai, ChatGPT ou Gemini junto com o material que coletou. Cole o prompt e depois cole seu material — a IA vai gerar o Voice Guide.
+> "Agora você vai usar esse prompt no Claude.ai, ChatGPT ou Gemini junto com o material JÁ LIMPO. Cole o prompt e depois cole seu material — a IA vai gerar o Voice Guide.
+>
+> Duas coisas que fazem esse prompt gerar um guide de verdade (não um genérico): ele pede pra IA mapear o seu **motor retórico** (como você fricciona em vez de concordar) e pra incluir **exemplos reais** das suas conversas (few-shots valem mais que regras soltas).
 >
 > Me avisa quando tiver o arquivo gerado."
 
 Aguarde confirmação de que o Voice Guide foi gerado. Não avance até o aluno confirmar.
 
-### A5 — Etapa 4: Validação
+### A5 — Etapa 5: Validação (2 camadas)
 
 Busque e apresente o conteúdo de:
 `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/03-validacao.md`
 
 Após apresentar, instrua:
 
-> "Faça o teste de validação descrito acima. Quando tiver a pontuação e o arquivo `voice-guide.md` final pronto, me avisa."
+> "A validação tem 2 camadas: primeiro um LLM-juiz cego pontua numa rubrica de 6 dimensões (mostra ONDE o guide perde ponto); depois você faz o teste humano final, com um cuidado pra não se enganar pela própria memória (use conversas antigas).
+>
+> Um aviso importante: não persiga nota 10. Quando a superfície satura (~9) e o motor estabiliza (~6-7), pode parar — o resto é substância que vem do contexto da conversa, não do guide.
+>
+> Quando tiver a pontuação e o arquivo `voice-guide.md` final pronto, me avisa."
 
 Quando o aluno confirmar que tem o `voice-guide.md` validado, vá para o **CAMINHO B**.
 
@@ -284,24 +302,28 @@ Use quando o corpus mudou significativamente ou o guide ficou defasado (voz evol
    - Se **não**: busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01-coleta.md` e guie a coleta.
    - Se **sim**: avance direto para o próximo passo.
 
-3. Extração com IA:
+3. Higiene do novo corpus (não pule):
+   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01b-higiene.md`
+   - Rode a detecção das 5 fontes de contaminação sobre o novo material e devolva pra revisão do aluno. Só avance com corpus limpo.
+
+4. Extração com IA:
    - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/02-prompt-mestre.md`
-   - Instrua: *"Use este prompt com seu novo corpus. Me avisa quando tiver o guide gerado."*
+   - Instrua: *"Use este prompt com seu novo corpus JÁ LIMPO. Ele agora mapeia seu motor retórico e pede exemplos reais. Me avisa quando tiver o guide gerado."*
    - Aguarde confirmação.
 
-4. Validação:
+5. Validação (2 camadas):
    - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/03-validacao.md`
-   - Aguarde nota de validação. Se nota < 8, oriente iteração antes de prosseguir.
+   - Conduza a Camada 1 (LLM-juiz, rubrica de 6 dimensões) e a Camada 2 (teste humano cego). Se o motor ficar abaixo de ~6, oriente iteração na seção 0 (motor) antes de prosseguir.
 
-5. Após validação aprovada:
+6. Após validação aprovada:
    - Peça o novo conteúdo do guide
    - Salve em `~/.claude/voice-guide.md` (sobrescreve o anterior)
    - Confirme: *"Novo guide ativo. Backup do anterior em `~/.claude/voice-guide-backup-[DATA].md`."*
 
-6. Pergunte sobre re-sincronização:
+7. Pergunte sobre re-sincronização:
    > "Quais plataformas você tem o guide instalado? (Claude Code já está atualizado automaticamente)"
 
-7. Para cada plataforma confirmada, execute B3, B4 ou B5.
+8. Para cada plataforma confirmada, execute B3, B4 ou B5.
 
 ### C4 — Re-sincronização de plataformas
 

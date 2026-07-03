@@ -2,7 +2,7 @@
 name: [Empresa] Brand Voice
 description: Como a marca [Empresa] comunica de forma consistente em todos os canais oficiais.
 type: principle
-version: 0.1
+version: 2.0
 ---
 
 # [Empresa] Brand Voice

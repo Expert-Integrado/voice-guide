@@ -18,6 +18,8 @@ a cada pergunta antes de avançar.
 
 O instalador detecta automaticamente se você já tem um Voice Guide ou ainda precisa criar um, e configura tudo globalmente no seu sistema.
 
+> **Atualizado — método v2** (validado num ciclo real de otimização): o pipeline agora tem uma etapa explícita de **higiene de corpus** (a mais importante — tira do material o que não é a sua voz), captura o seu **motor retórico** (como você fricciona em vez de concordar, que é o que engana o teste às cegas), usa **exemplos reais** em vez de só regras, e valida em **2 camadas** (juiz LLM cego + teste humano com correção do viés de memória). Detalhes em `pipeline/`.
+
 ---
 
 ## Por que isso importa
@@ -32,7 +34,7 @@ Voice Guide é o documento que faz esse trabalho.
 
 | Pasta | Conteúdo | Para quem |
 |-------|----------|-----------|
-| [`pipeline/`](pipeline/) | Jornada completa: conceito → coleta → extração → validação → ativação | Aluno criando o guide |
+| [`pipeline/`](pipeline/) | Jornada completa: conceito → coleta → **higiene** → extração → validação → ativação | Aluno criando o guide |
 | [`aula/`](aula/) | Slides e checklist de execução | Instrutor |
 | [`templates/`](templates/) | Esqueletos prontos para Voice Guide e Brand Voice | Aluno e instalador |
 | [`skill/`](skill/) | Skill para Claude Code (instalado automaticamente via onboarding) | Claude Code |
@@ -46,8 +48,9 @@ Voice Guide é o documento que faz esse trabalho.
 |---|---|---|
 | 0 | [`pipeline/00-voice-vs-brand.md`](pipeline/00-voice-vs-brand.md) | Entender a diferença Voice Guide × Brand Voice |
 | 1 | [`pipeline/01-coleta.md`](pipeline/01-coleta.md) | Como coletar o material bruto (WhatsApp, Zoom, e-mail, posts) |
-| 2 | [`pipeline/02-prompt-mestre.md`](pipeline/02-prompt-mestre.md) | **O coração**: prompt pronto que gera o seu Voice Guide |
-| 3 | [`pipeline/03-validacao.md`](pipeline/03-validacao.md) | Como saber se ficou bom (protocolo A/B simplificado) |
+| 1b | [`pipeline/01b-higiene.md`](pipeline/01b-higiene.md) | **A etapa mais importante**: limpar o corpus (5 contaminações + janela pré-IA + separação por modalidade) |
+| 2 | [`pipeline/02-prompt-mestre.md`](pipeline/02-prompt-mestre.md) | **O coração**: prompt pronto que gera o guide, com motor retórico + few-shots reais |
+| 3 | [`pipeline/03-validacao.md`](pipeline/03-validacao.md) | Validação em 2 camadas (juiz LLM cego + teste humano) + critério de parada |
 | 4 | [`pipeline/04-ativacao.md`](pipeline/04-ativacao.md) | Como plugar o guide em Claude, ChatGPT, Gemini, automações |
 
 ## Templates prontos
@@ -69,3 +72,7 @@ Voice Guide é o documento que faz esse trabalho.
 - **Estrato**: contexto de audiência (lead frio, cliente, equipe, parceiro técnico, pessoal) — o tom muda em cada um
 - **Anti-padrão**: coisa que você NUNCA fala, fingerprint claro de "isso não foi eu/minha marca"
 - **Corpus**: o conjunto de mensagens/textos coletados que vai virar matéria-prima do guide
+- **Higiene de corpus**: limpar o material antes de extrair — tirar transcrição de áudio, texto de IA, mensagens de outros atendentes, bots e ruído. A etapa mais decisiva do pipeline
+- **Motor retórico**: COMO a pessoa reage a uma tese/queixa/pedido (fricciona, devolve, qualifica) — vale mais que vocabulário, porque LLM por default concorda e a pessoa real fricciona
+- **Few-shot**: exemplo real de conversa (mensagem recebida → resposta dada) colado no guide. Ensina o modelo melhor que 50 regras declarativas
+- **Viés de memória**: no teste humano, você lembra do que respondeu de verdade e acerta por memória, não por detectar o clone — corrige-se usando conversas antigas e mantendo a substância idêntica entre real e simulado
