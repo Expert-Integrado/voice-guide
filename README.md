@@ -1,5 +1,7 @@
 # Voice Guide — Material da aula
 
+> **Entenda a arquitetura:** https://voice-guide.ericluciano.com.br
+
 Como criar um Voice Guide próprio (ou da sua empresa) pra fazer IA falar como você (ou como a sua marca) em qualquer canal: Claude, ChatGPT, Gemini, automações no n8n/Zapier, e-mail, WhatsApp, LinkedIn.
 
 ---
