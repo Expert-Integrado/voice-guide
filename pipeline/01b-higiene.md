@@ -6,7 +6,7 @@ Coletar material (passo 01) é o começo. Antes de mandar pra IA extrair (passo 
 
 ## Por que essa etapa existe
 
-Quando fizemos isso de verdade no corpus do Eric, a limpeza revelou que ~4% do material bruto (quase 1.000 mensagens) era **contaminação** que teria distorcido gravemente o guide. Uma "regra" inteira do guide — o comprimento médio de 80 caracteres por mensagem — era **artefato de lixo institucional**, não a voz real. A mediana verdadeira era ~22 caracteres. Sem a higiene, o guide teria ensinado a IA a escrever de um jeito que a pessoa NUNCA escreveu.
+Num caso real de otimização, a limpeza revelou que ~4% do material bruto (quase 1.000 mensagens num corpus grande) era **contaminação** que teria distorcido gravemente o guide. Uma "regra" inteira que o guide sujo produzia — um comprimento médio inflado de mensagem — era **artefato de lixo institucional**, não a voz real: a mediana verdadeira era muito menor. Sem a higiene, o guide teria ensinado a IA a escrever de um jeito que a pessoa NUNCA escreveu.
 
 O problema é traiçoeiro: o export "parece" seu (está no seu número, no seu histórico), mas boa parte dele foi escrita por outra coisa — um bot, um funcionário, uma transcrição de áudio, uma IA que você usou pra redigir. Colar isso na extração é clonar o clone.
 
@@ -21,15 +21,15 @@ Voz **falada** ≠ voz **digitada**. Se você manda áudio e o app/bot transcrev
 ### 2. Mensagens escritas por IA / assistente
 Se você já usa IA pra redigir propostas, copy, análises — e cola no chat — esse texto está no seu histórico real, mas NÃO é sua voz de conversa. É documento colado.
 
-- **Impressão digital nº1: em-dash (`—`).** Quase ninguém digita em-dash no celular. Se aparece, quase sempre é texto gerado/colado de IA. No corpus do Eric, em-dash era literalmente ZERO em 2024 e começou a "vazar" só a partir de 2025, em textos longos estruturados.
+- **Impressão digital nº1: em-dash (`—`).** Quase ninguém digita em-dash no celular. Se aparece, quase sempre é texto gerado/colado de IA. Num caso real, o em-dash era literalmente ZERO no histórico antigo e só começou a "vazar" depois que a pessoa passou a usar IA pra redigir textos longos estruturados.
 - **Outros sinais:** parágrafos polidos, headers markdown (`#`, `##`), listas com bullets formatados, polidez excessiva ("Fico à disposição", "Agradeço o retorno"), estrutura de documento.
 - **Marcadores explícitos:** "Mensagem enviada pelo ChatGPT", templates de outbound colados idênticos.
 
 ### 3. Mensagens de OUTROS atendentes no mesmo número
-Se o número é um canal de atendimento multi-pessoa (ChatGuru, CRM, SAC), o export atribui TODAS as mensagens ao dono da conta — mas quem digitou foi um funcionário. No corpus do Eric, 6 chats inteiros (407 mensagens) pareciam ser dele e eram 100% de outros funcionários assinando `*Nome:*` no corpo. Se o texto tem prefixo de assinatura de terceiro, ou é template institucional, corte o chat inteiro.
+Se o número é um canal de atendimento multi-pessoa (ChatGuru, CRM, SAC), o export atribui TODAS as mensagens ao dono da conta — mas quem digitou foi um funcionário. Num caso real, vários chats inteiros (centenas de mensagens) pareciam ser do dono e eram 100% de outros funcionários assinando `*Nome:*` no corpo. Se o texto tem prefixo de assinatura de terceiro, ou é template institucional, corte o chat inteiro.
 
 ### 4. Bots e mensagens automáticas
-Resumos automáticos diários, confirmações de agendamento, "Horário de funcionamento", "Atendimento encerrado", disparos de grupo gerados por bot. No corpus do Eric, um bot de "resumo tático" diário representava quase METADE do volume bruto de um grupo — tudo atribuído ao dono da conta. Filtre por marcadores tipo "Gerado por [nome] IA", horários fixos repetidos, texto idêntico recorrente.
+Resumos automáticos diários, confirmações de agendamento, "Horário de funcionamento", "Atendimento encerrado", disparos de grupo gerados por bot. Num caso real, um bot de "resumo" diário representava quase METADE do volume bruto de um grupo — tudo atribuído ao dono da conta. Filtre por marcadores tipo "Gerado por [nome] IA", horários fixos repetidos, texto idêntico recorrente.
 
 ### 5. Ruído estrutural
 URLs isoladas, separadores (`____`, `----`), placeholders de mídia (`<Mídia oculta>`, `imagem ocultada`), mensagens de sistema ("Você adicionou...", "As mensagens são criptografadas de ponta a ponta").
@@ -38,7 +38,7 @@ URLs isoladas, separadores (`____`, `----`), placeholders de mídia (`<Mídia oc
 
 Se você começou a usar IA pesado em algum momento (ex: fim de 2025), o corpus DEPOIS desse ponto está progressivamente contaminado por texto assistido — mesmo em conversa casual, porque um pedaço já saiu de uma IA.
 
-**Prefira uma janela de tempo ANTERIOR ao uso pesado de IA** pra ter a voz espontânea limpa. No caso do Eric, a janela `2024 → começo de 2026` (pré-IA pesada) foi a referência canônica; o corpus "atual" estava contaminado e teria retroalimentado o clone.
+**Prefira uma janela de tempo ANTERIOR ao uso pesado de IA** pra ter a voz espontânea limpa. Num caso real, a janela pré-IA-pesada foi a referência canônica; o corpus "atual" já estava contaminado por texto assistido e teria retroalimentado o clone.
 
 > Regra prática: se você não lembra a partir de quando passou a redigir com IA, procure o primeiro em-dash do seu histórico. Ele costuma marcar a fronteira.
 
@@ -67,7 +67,7 @@ Para cada uma, diga o marcador que a denuncia. NÃO remova ainda — só liste
 pra eu revisar.
 ```
 
-Revise a lista (a IA erra pros dois lados), confirme, e só então peça o corpus limpo. **A inspeção manual dos casos-limite é obrigatória** — no processo do Eric, TODOS os achados de contaminação surgiram na revisão manual, nenhum estava na lista de filtros original.
+Revise a lista (a IA erra pros dois lados), confirme, e só então peça o corpus limpo. **A inspeção manual dos casos-limite é obrigatória** — num caso real, TODOS os achados de contaminação mais importantes surgiram na revisão manual, nenhum estava na lista de filtros original.
 
 ## Checklist da higiene
 

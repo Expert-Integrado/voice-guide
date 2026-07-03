@@ -60,7 +60,7 @@ O corpus precisa cobrir **contextos diferentes** pra capturar como você modula 
 - Ou suba o `.mp4`/`.m4a` em um serviço como Riverside, Otter.ai, Descript
 
 **Limpeza:**
-- Identifique seus blocos de fala (você é "Eric:" ou "Speaker 1:")
+- Identifique seus blocos de fala (você aparece como "[Seu Nome]:" ou "Speaker 1:")
 - Mantenha apenas o que VOCÊ falou
 - **Salve o áudio transcrito num arquivo SEPARADO do texto digitado** (ex: `zoom-transcripts.txt`, não misturado com `whatsapp-*.txt`)
 

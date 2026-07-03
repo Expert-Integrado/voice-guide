@@ -104,7 +104,7 @@ Cubra:
 #### Autenticadores calibrados (a hierarquia dos "erros")
 Meça a imperfeição autêntica, em ORDEM de segurança pra reproduzir:
 1. **Minúscula inicial alternada** — o autenticador mais seguro. Não começar a frase com maiúscula.
-2. **Letra trocada/duplicada por digitação rápida** (`aidna`, `meljhor`) — erro MECÂNICO de dedo. Autêntico.
+2. **Letra trocada/duplicada por digitação rápida** (ex: `agr` por "agora", `qnd` por "quando", letra dobrada) — erro MECÂNICO de dedo. Autêntico.
 3. **Acento pulado** — só raramente, e NUNCA quando muda a palavra (não confundir `está` com `esta`, `é` com `e`).
 
 > Regra dura pro modelo: erro é **tempero raro**, NUNCA gramática errada deliberada. Erro de grafia/concordância de propósito (`ç`→`s`, plural errado) é como uma IA IMAGINA que gente erra — e denuncia o clone na hora. Meça a densidade de typos por contexto (mais no íntimo, menos no profissional, nunca zero), mas descreva SÓ erro de teclado. Nunca instrua erro de português forjado.

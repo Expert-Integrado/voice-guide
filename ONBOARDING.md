@@ -1,4 +1,4 @@
-# Voice Guide — Instalador Automático
+# Voice Guide 2.0 — Instalador Automático
 
 > **Lendo isso no GitHub?** Este arquivo é o roteiro que o Claude executa quando você cola o Magic Prompt. Para instalar seu Voice Guide, peça ao instrutor o Magic Prompt ou use:
 >

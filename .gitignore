@@ -20,3 +20,6 @@ dist/
 
 # Internal planning docs (specs e planos de implementação)
 docs/
+
+# Scratch / build temporário local
+temp/

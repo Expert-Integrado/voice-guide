@@ -1,4 +1,4 @@
-# Voice Guide — Material da aula
+# Voice Guide 2.0 — Material da aula
 
 > **Entenda a arquitetura:** https://voice-guide.ericluciano.com.br
 
@@ -20,7 +20,7 @@ a cada pergunta antes de avançar.
 
 O instalador detecta automaticamente se você já tem um Voice Guide ou ainda precisa criar um, e configura tudo globalmente no seu sistema.
 
-> **Atualizado — método v2** (validado num ciclo real de otimização): o pipeline agora tem uma etapa explícita de **higiene de corpus** (a mais importante — tira do material o que não é a sua voz), captura o seu **motor retórico** (como você fricciona em vez de concordar, que é o que engana o teste às cegas), usa **exemplos reais** em vez de só regras, e valida em **2 camadas** (juiz LLM cego + teste humano com correção do viés de memória). Detalhes em `pipeline/`.
+> **Voice Guide 2.0** (validado num ciclo real de otimização): o pipeline agora tem uma etapa explícita de **higiene de corpus** (a mais importante — tira do material o que não é a sua voz), captura o seu **motor retórico** (como você fricciona em vez de concordar, que é o que engana o teste às cegas), usa **exemplos reais** em vez de só regras, e valida em **2 camadas** (juiz LLM cego + teste humano com correção do viés de memória). Detalhes em `pipeline/`.
 
 ---
 
@@ -40,7 +40,7 @@ Voice Guide é o documento que faz esse trabalho.
 | [`aula/`](aula/) | Slides e checklist de execução | Instrutor |
 | [`templates/`](templates/) | Esqueletos prontos para Voice Guide e Brand Voice | Aluno e instalador |
 | [`skill/`](skill/) | Skill para Claude Code (instalado automaticamente via onboarding) | Claude Code |
-| [`cases/`](cases/) | Exemplos reais validados | Referência |
+| [`cases/`](cases/) | Exemplo completo com persona fictícia | Referência |
 
 ---
 
@@ -60,10 +60,10 @@ Voice Guide é o documento que faz esse trabalho.
 - [`templates/voice-guide-template.md`](templates/voice-guide-template.md) — esqueleto pessoal
 - [`templates/brand-voice-template.md`](templates/brand-voice-template.md) — esqueleto institucional
 
-## Exemplos reais
+## Exemplo de referência (persona fictícia)
 
-- [`cases/exemplo-eric-sanitizado.md`](cases/exemplo-eric-sanitizado.md) — Voice Guide do Eric Luciano (extraído de 13.526 mensagens reais), versão pública
-- [`cases/simulacoes-validacao.md`](cases/simulacoes-validacao.md) — 5 simulações reais aplicando o Voice Guide
+- [`cases/exemplo-voice-guide-fingido.md`](cases/exemplo-voice-guide-fingido.md) — Voice Guide completo de uma persona inventada, pra você ver como fica um guide maduro (nenhum dado real de ninguém)
+- [`cases/simulacoes-validacao.md`](cases/simulacoes-validacao.md) — 5 simulações antes/depois aplicando esse guide de exemplo
 
 ---
 

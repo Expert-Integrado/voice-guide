@@ -68,15 +68,15 @@ Em sessão Claude Code, basta dizer:
 
 ---
 
-## 3. OpenClaw (agente 24/7 na VPS)
+## 3. OpenClaw / Open WebUI (agente 24/7 em servidor)
 
-OpenClaw é o agente da Mentoria que roda na VPS Hostinger. **Não usa `CLAUDE.md`** — tem canone próprio de arquivos na raiz: `SOUL.md`, `IDENTITY.md`, `AGENTS.md`, `USER.md`, `TOOLS.md`, `HEARTBEAT.md`, `MEMORY.md`.
+Se você roda um agente próprio 24/7 num servidor (padrão OpenClaw / Open WebUI), ele geralmente **não usa `CLAUDE.md`** — tem um canone próprio de arquivos na raiz do repo, tipicamente `SOUL.md`, `IDENTITY.md`, `AGENTS.md`, `USER.md`, `TOOLS.md`, `MEMORY.md`.
 
 ### Onde plugar o voice guide
-O Voice Guide entra no **`SOUL.md`** (carta de identidade do agente) ou referenciado dele.
+O Voice Guide entra no **`SOUL.md`** (carta de identidade do agente) ou é referenciado a partir dele.
 
 ### Setup
-1. Acesse o repo do seu agente OpenClaw (estrutura `estrutura-inteligente`)
+1. Acesse o repo do seu agente
 2. Edita `SOUL.md` adicionando:
    ```markdown
    ## Voice Guide

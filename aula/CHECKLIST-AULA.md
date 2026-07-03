@@ -24,15 +24,9 @@
 | `templates/voice-guide-template.md` | Esqueleto pessoal | ✅ |
 | `templates/brand-voice-template.md` | Esqueleto institucional | ✅ |
 | `skill/voice-apply/SKILL.md` | Skill opcional pra Claude Code | ✅ |
-| `cases/exemplo-eric-sanitizado.md` | Seu Voice Guide v1.3 sanitizado como exemplo | ✅ |
-| `cases/simulacoes-validacao.md` | 5 simulações antes/depois com seu guide | ✅ |
+| `cases/exemplo-voice-guide-fingido.md` | Voice Guide completo de persona fictícia (exemplo de referência) | ✅ |
+| `cases/simulacoes-validacao.md` | 5 simulações antes/depois com a persona fictícia | ✅ |
 | `slides.html` | 9 slides reveal.js dark mode | ✅ |
-
-### Brain
-- Nota `pj4a9efeo6nw` salva ([voice-guide-aula — material de mentoria distribuível])
-- 2 edges criados:
-  - `depends_on` → `yasak98uo4z4` (Voice Guide v1.3 do Eric)
-  - `same_mechanism_as` → `0mkxum5t4yz6` (Pattern Voice-Aware Skill)
 
 ## Como rodar a aula amanhã
 
@@ -79,14 +73,14 @@ ls slides.html  # deve listar o arquivo
 ### Reveal.js não carrega (sem internet)
 Slides puxam CDN. Se for projetar offline, baixa o reveal.js pra `lib/` local e ajusta os `<link>` e `<script>` no HTML.
 
-### Aluno pergunta "preciso do MCP do Eric?"
-**NÃO.** Material foi construído pra rodar 100% via Claude.ai (ou ChatGPT/Gemini). O MCP do Eric é especificidade dele, alunos rodam o prompt mestre direto na IA.
+### Aluno pergunta "preciso de MCP ou infra especial?"
+**NÃO.** Material foi construído pra rodar 100% via Claude.ai (ou ChatGPT/Gemini). Ninguém precisa de MCP nenhum — alunos rodam o prompt mestre direto na IA.
 
 ## Pontos pra você revisar antes da aula
 
 1. **Abre o `slides.html` agora e passa pelos 9 slides em ~2min.** Testa se tela está ok pro projetor que você vai usar.
 2. **Lê o `cases/simulacoes-validacao.md`** — 5 minutos. São os exemplos que você pode citar se aluno pedir "mostra mais um caso".
-3. **Revisa o `cases/exemplo-eric-sanitizado.md`** — confirma se a sanitização tá ok pra ficar público (mantive: gírias como mano/cara/trampo/doideira/véi/galera/kkk; removi: vocabulário pessoal/familiar e intensificadores fortes).
+3. **Revisa o `cases/exemplo-voice-guide-fingido.md`** — é a persona fictícia (Marina, estúdio de pilates). Confirma que o exemplo ilustra bem o formato de um guide completo. Nenhum dado real de ninguém entra aqui.
 
 ## O que tá pendente (você decide se faz)
 
@@ -98,13 +92,10 @@ Slides puxam CDN. Se for projetar offline, baixa o reveal.js pra `lib/` local e 
 ## Links rápidos pra abrir manhã
 
 - Repo: https://github.com/expertintegrado/voice-guide
-- Slides (local): `C:\repos\voice-guide-aula\slides.html`
-- Brain note: `mcp__expert-brain__get_note id="pj4a9efeo6nw"`
-- Voice Guide canônico (privado): `C:\repos\voice-guide\voice-guide.md`
+- Slides (local): `slides.html` na raiz do repo
 
 ---
 
-**Tempo gasto na construção:** ~3h
-**Validado em:** slides renderizam corretamente, conteúdo revisado, links cruzados batem, 5 simulações com seu Voice Guide documentadas
+**Validado em:** slides renderizam corretamente, conteúdo revisado, links cruzados batem, 5 simulações com a persona fictícia documentadas
 
 Bom dia. Bora?

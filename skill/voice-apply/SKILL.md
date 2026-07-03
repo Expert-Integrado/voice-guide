@@ -72,16 +72,18 @@ Quando a skill ativa:
 - NAO cair no default de LLM: concordar/validar/resolver com CTA gentil. Se o guide tem uma secao 0 (MOTOR), aplique o movimento dela ANTES de tudo — a pessoa real fricciona (devolve pergunta, pede evidencia, qualifica) onde a IA concorda. Concordancia lisa e o fingerprint nº1 de texto de IA.
 - NAO forjar erro de gramatica pra "parecer humano". Autenticidade e so erro de teclado (minuscula inicial, letra trocada), nunca portugues errado de proposito.
 
-## Exemplo de fluxo
+## Exemplo de fluxo (persona fictícia, so pra ilustrar)
 
-**Usuario:** "Responde esse cliente que quer cancelar mentoria: 'Eric, achei que ia ter mais resultados nesse 1o mes...'"
+**Usuario:** "Responde essa aluna que ta desanimada: 'achei que ia sentir mais diferenca nesse 1o mes...'"
 
 **Skill ativa:**
-1. Le voice-guide.md
-2. Identifica: estrato cliente, queixa, requer postura frontal (nao validacao afetiva)
-3. Redige:
-   > "Fala mano. Olha, primeiro mes raramente entrega resultado completo — mentoria de 6 meses tem curva. Mas se vc ta sentindo q nao ta avancando, isso eh real. Posso te ligar amanha pra entender onde travou e ver se vale ajustar plano?"
+1. Le voice-guide.md (o guide da persona)
+2. Identifica: estrato aluna, queixa, requer acolher a dor + propor ajuste concreto (nao motivacao vazia)
+3. Redige aplicando as regras DAQUELE guide, por exemplo:
+   > "Travar no primeiro mes e super comum, quase todo mundo passa por isso. No seu tempo, ta? Me conta o que ta te incomodando mais que amanha a gente ajusta teu treino junto. Pode ser?"
 4. Mostra ao usuario
+
+> O texto acima segue o guide de exemplo (persona ficticia). Com o SEU voice guide, a skill aplica as SUAS regras.
 
 ## Instalacao em diferentes ambientes
 

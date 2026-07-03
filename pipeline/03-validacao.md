@@ -46,7 +46,7 @@ Idealmente use OUTRA instância (ou outro modelo), "cega" ao que gerou. Peça no
 | **Anti-padrões** | Escapou dos fingerprints de IA (em-dash, hype, concordância lisa)? |
 | **Substância** | O miolo factual bate, ou o clone inventou/inverteu um fato? |
 
-Monte um **mapa de calor `contexto × dimensão`** — mostra EXATAMENTE onde o guide perde ponto. No processo do Eric, isso revelou que `anti-padrões` já estava em 9,2 (superfície resolvida) mas `retórica` estava em 3,8 (o motor estava errado). Sem o mapa, seria chute — e você iteraria na dimensão errada.
+Monte um **mapa de calor `contexto × dimensão`** — mostra EXATAMENTE onde o guide perde ponto. Num caso real, isso revelou que `anti-padrões` já estava alto (superfície resolvida) mas `retórica` estava baixo (o motor estava errado). Sem o mapa, seria chute — e você iteraria na dimensão errada.
 
 > Por que o juiz LLM não pode ver a resposta real aqui: ele não tem viés de memória, então precisa ficar cego à substância pra avaliar a VOZ de forma independente. (Na Camada 2, humana, é o contrário — ver abaixo.)
 
@@ -78,7 +78,7 @@ Isso é o oposto do protocolo da Camada 1 (onde o gerador é cego à resposta re
 
 ### Como rodar o teste cego
 
-Coloque os pares lado a lado, embaralhados (você não sabe qual é real e qual é gerado), e para cada um tente adivinhar. A métrica honesta é a **taxa de confusão**: quantas vezes você NÃO conseguiu distinguir. Se você acerta 100%, o clone ainda é detectável. No processo do Eric, ~11% de pares confundíveis na primeira rodada real — e subiu com a iteração.
+Coloque os pares lado a lado, embaralhados (você não sabe qual é real e qual é gerado), e para cada um tente adivinhar. A métrica honesta é a **taxa de confusão**: quantas vezes você NÃO conseguiu distinguir. Se você acerta 100%, o clone ainda é detectável. Num caso real, a taxa de confusão começou baixa na primeira rodada e subiu a cada iteração do guide.
 
 > **Aviso que vale ouro:** nota alta de rubrica ≠ distância curta do real. Um guide pode marcar 7.8 numa rubrica de "aprovação" e ainda estar longe da resposta real. A rubrica (Camada 1) te diz ONDE corrigir; o teste cego (Camada 2) te diz SE está perto. Precisa das duas.
 

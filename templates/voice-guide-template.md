@@ -69,7 +69,7 @@ version: 2.0
 - **Caixa alta**: frequência e função
 - **Emojis**: quais, frequência, em que contexto
 - **Conectores frequentes**: ...
-- **Autenticadores/typos** (só erro de teclado, NUNCA gramática errada): minúscula inicial > letra trocada/duplicada (`aidna`) > acento pulado raro (nunca quando muda a palavra). Erro é tempero raro.
+- **Autenticadores/typos** (só erro de teclado, NUNCA gramática errada): minúscula inicial > letra trocada/duplicada (ex: `qnd`, letra dobrada) > acento pulado raro (nunca quando muda a palavra). Erro é tempero raro.
 
 ## 4. Modulação por contexto
 
