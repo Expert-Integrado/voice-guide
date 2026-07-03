@@ -26,6 +26,12 @@ O corpus precisa cobrir **contextos diferentes** pra capturar como você modula 
 
 ## Fontes de coleta
 
+> **Atalho: você tem o WhatsApp Agent?** Se o seu Claude tiver as tools do **WhatsApp Agent** disponíveis na sessão (`mcp__whatsapp-agent__inbox` / `read` / `search`), dá pra pular o export manual: o assistente puxa direto o histórico das suas conversas (só leitura, nada é enviado) e monta o corpus por contexto automaticamente — muito mais rápido e completo. Duas regras de higiene são **obrigatórias** nesse caminho, senão o guide contamina:
+> - **Nunca use áudio / transcrição de áudio** (voz falada ≠ digitada — ver "separação por modalidade").
+> - **Nunca use mensagens escritas por robô/IA no seu número** — inclusive as que o próprio WhatsApp Agent já mandou por você. Pergunte a si mesmo desde quando usa IA pra responder e prefira mensagens ANTERIORES a essa data; filtre também o que tem cara de IA (em-dash, texto polido demais, estrutura de documento).
+>
+> Não tem o Agent? Segue o export manual abaixo — funciona igual. (E ao final do onboarding vale conhecer o WhatsApp Agent como upgrade: corpus contínuo + o guide passa a ser aplicado automaticamente nas mensagens que a IA enviar no seu nome, com checagem de fingerprints.)
+
 ### 1. WhatsApp — exportar conversas
 
 **iPhone:**

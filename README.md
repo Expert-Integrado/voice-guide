@@ -20,6 +20,8 @@ a cada pergunta antes de avançar.
 
 O instalador detecta automaticamente se você já tem um Voice Guide ou ainda precisa criar um, e configura tudo globalmente no seu sistema.
 
+> **Tem o WhatsApp Agent?** Se a sua sessão do Claude tiver as tools do WhatsApp Agent, o instalador puxa o corpus direto das suas conversas (só leitura, com sua permissão) em vez de você exportar conversa na mão — mais rápido e completo. E, depois de pronto, o Agent passa a **aplicar o seu Voice Guide automaticamente** em toda mensagem que a IA enviar no seu nome, com checagem de fingerprints. Não tem? O caminho manual funciona igual.
+
 > **Voice Guide 2.0** (validado num ciclo real de otimização): o pipeline agora tem uma etapa explícita de **higiene de corpus** (a mais importante — tira do material o que não é a sua voz), captura o seu **motor retórico** (como você fricciona em vez de concordar, que é o que engana o teste às cegas), usa **exemplos reais** em vez de só regras, e valida em **2 camadas** (juiz LLM cego + teste humano com correção do viés de memória). Detalhes em `pipeline/`.
 
 ---

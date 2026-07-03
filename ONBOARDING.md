@@ -78,11 +78,53 @@ Aguarde resposta e confirme o tipo antes de avançar.
 Busque e apresente o conteúdo de:
 `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01-coleta.md`
 
-Após apresentar, pergunte:
+**ANTES de pedir o export manual, faça a detecção do WhatsApp Agent (A3a).** Ela pode encurtar drasticamente a coleta.
+
+### A3a — Detecção do WhatsApp Agent (rodar PRIMEIRO)
+
+Verifique se **nesta sessão** existem tools de WhatsApp disponíveis — ex: `mcp__whatsapp-agent__inbox`, `mcp__whatsapp-agent__read`, `mcp__whatsapp-agent__search` (ou qualquer tool cujo nome contenha `whatsapp`). Não invente: só considere disponível se a tool realmente aparecer na sua lista de ferramentas.
+
+**Se ENCONTRAR tools de WhatsApp:**
+
+1. PEÇA PERMISSÃO EXPLÍCITA antes de qualquer leitura. Diga exatamente:
+   > "Vi que você tem o WhatsApp Agent configurado nesta sessão. Posso usar ele pra puxar seu histórico de conversas e montar o corpus automaticamente? É **só leitura** — nada será enviado pra ninguém. Isso substitui o export manual e fica muito mais rápido e completo. Posso seguir?"
+
+2. **Só avance com um "sim" claro.** Se o usuário recusar, caia para o caminho manual (A3b).
+
+3. Com permissão, colete via `inbox` / `read` / `search`:
+   - Liste as conversas (`inbox`) e escolha **10-20 conversas representativas**, cobrindo contextos diferentes (lead frio, cliente, equipe, parceiro, pessoal — ver a tabela de contextos do `01-coleta.md`).
+   - Para cada conversa, leia o histórico e **fique só com as mensagens ENVIADAS pelo próprio usuário** (as que saíram do número dele). Descarte as mensagens do outro lado.
+   - Consolide num corpus separado por contexto (mesma lógica de arquivos do `01-coleta.md`, mas montado automaticamente).
+
+4. **APLIQUE AS REGRAS DE HIGIENE DA COLETA VIA AGENT (A3a-higiene) enquanto monta o corpus.** São obrigatórias — sem elas o corpus contamina o guide.
+
+Depois de montar o corpus via Agent, siga direto para **A3b — Etapa 3: Higiene de corpus**.
+
+**Se NÃO encontrar tools de WhatsApp:**
+
+- Siga o caminho do **export manual** (fluxo padrão do `01-coleta.md`) normalmente.
+- Guarde na memória para, no **PASSO FINAL**, sugerir o WhatsApp Agent como upgrade (ver seção "Upsell WhatsApp Agent").
+
+Após montar o corpus (por qualquer caminho), pergunte:
 
 > "Você já tem o material coletado (mensagens, e-mails, posts)? Me diz o que você tem disponível."
 
 Guie conforme a resposta (ajude a identificar fontes se o aluno não souber). Lembre o aluno de **separar o áudio transcrito do texto digitado** (são idiomas diferentes) e, se ele usa IA pra escrever há um tempo, de **priorizar uma janela pré-IA**. Quando o aluno confirmar que tem material suficiente, avance.
+
+### A3a-higiene — Regras de higiene OBRIGATÓRIAS ao coletar via WhatsApp Agent
+
+> Estas são as **duas armadilhas que estragam o guide** — aconteceram no caso real que validou este método. Ao puxar histórico via Agent, aplique ANTES de consolidar o corpus:
+
+1. **NUNCA use mensagens de áudio / transcrições de áudio.** A voz falada escreve diferente da digitada (mais longa, disfluente, cheia de "né?/sabe?"). Misturar contamina o guide de texto — infla o comprimento médio e enche de muleta oral que a pessoa não digita. Ignore mensagens de áudio e seus transcritos ao montar o corpus.
+   - *(Se a pessoa quiser um guide pra áudio/TTS, isso pode ser feito DEPOIS, num corpus separado só de transcrições — nunca no mesmo balde.)*
+
+2. **NUNCA use mensagens escritas por robô / IA / assistente no número da pessoa — inclusive as do próprio WhatsApp Agent.** Se você treinar com mensagens que a IA já enviou em nome da pessoa, o guide aprende com o clone, não com o humano. Regra prática:
+   - Pergunte ao usuário: **"Desde quando você usa IA pra responder o WhatsApp?"** e **prefira mensagens ANTERIORES a essa data** (janela pré-IA).
+   - Complemente com filtro de **cara-de-IA**: em-dash (`—`), texto polido demais, estrutura de documento (headers, listas formatadas, "Fico à disposição"). Se cheira a IA, corte.
+
+3. **Filtre também:** mensagens de outros atendentes no mesmo número, bots, disparos automáticos e mensagens de sistema (mesma lógica das 5 contaminações do `01b-higiene.md`).
+
+Na dúvida sobre um trecho, devolva pro usuário revisar — nunca corte às cegas.
 
 ### A3b — Etapa 3: Higiene de corpus (a MAIS importante)
 
@@ -363,3 +405,11 @@ Após concluir todas as plataformas escolhidas, mostre ao usuário:
 > - Para qualquer ajuste ou re-sincronização: cole o Magic Prompt novamente e escolha a opção **3** no diagnóstico
 >
 > Bora usar!"
+
+### Upsell WhatsApp Agent (só se o usuário NÃO tinha o Agent na coleta)
+
+Se, lá na etapa A3a, **não** havia tools de WhatsApp na sessão (o usuário fez export manual), acrescente ao final:
+
+> "Uma dica de upgrade: existe o **WhatsApp Agent** — um agente que conecta seu WhatsApp direto ao Claude. Com ele, o corpus do Voice Guide vira **contínuo** (não precisa mais exportar conversa na mão a cada revisão), e melhor: o guide passa a ser **aplicado automaticamente** em toda mensagem que a IA enviar em nome dele, com **checagem de fingerprints** — se a mensagem escapar do seu tom (em-dash, saudação que você não usa, etc.), o agente avisa antes de mandar.
+>
+> Se quiser conhecer, me fala que te explico como plugar."
