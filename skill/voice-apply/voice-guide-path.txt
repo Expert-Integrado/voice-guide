@@ -1,1 +1,8 @@
-~/voice-guide.md
+# Caminho para o SEU voice-guide.md — parametrize na instalação.
+# Coloque UMA linha com o caminho absoluto (ou ~) do seu arquivo. Ex:
+#   ~/.claude/voice-guide.md          (Linux/Mac — padrão do instalador)
+#   /home/seunome/voice-guide.md      (Linux/Mac)
+#   C:\Users\SeuNome\voice-guide.md   (Windows)
+# Linhas iniciadas por # são ignoradas. Se nenhum caminho for informado,
+# a skill usa os fallbacks descritos em SKILL.md (~/.claude/voice-guide.md, etc).
+~/.claude/voice-guide.md

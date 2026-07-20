@@ -37,7 +37,7 @@ Trigger forte: quando estiver redigindo qualquer comunicacao externa em nome do 
 
 ## Configuracao (1x por instalacao)
 
-Edite o arquivo `voice-guide-path.txt` neste mesmo diretorio com o caminho absoluto pro seu voice guide:
+Edite o arquivo `voice-guide-path.txt` neste mesmo diretorio com o caminho absoluto pro seu voice guide (uma linha; linhas iniciadas por `#` sao comentario e sao ignoradas):
 
 ```
 C:\caminho\completo\pro\seu\voice-guide.md
@@ -48,7 +48,9 @@ Linux/Mac:
 /home/seunome/voice-guide.md
 ```
 
-Se o arquivo `voice-guide-path.txt` nao existir ou estiver vazio, a skill tenta os fallbacks:
+O arquivo ja vem com um padrao parametrizavel (`~/.claude/voice-guide.md`) e comentarios explicando como trocar. Ao ler o path, ignore linhas em branco e linhas iniciadas por `#`, e use a primeira linha valida.
+
+Se o arquivo `voice-guide-path.txt` nao existir, estiver vazio, ou so tiver comentarios, a skill tenta os fallbacks:
 1. `~/.claude/voice-guide.md`
 2. `~/voice-guide.md`
 3. Mesmo diretorio da skill: `./voice-guide.md`
