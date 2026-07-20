@@ -28,6 +28,93 @@ O instalador detecta automaticamente se você já tem um Voice Guide ou ainda pr
 
 ---
 
+## Instalação manual da skill (macOS, Linux e Windows)
+
+A instalação automática acima funciona igual nos três sistemas — o Claude Code cria os arquivos no lugar certo pra você. Esta seção é pra quem prefere instalar **na mão** ou entender exatamente onde cada arquivo vai parar.
+
+### Pré-requisitos (todos os sistemas)
+
+- **Claude Code CLI** instalado e autenticado (`claude`). Versão **1.0 ou superior** (skills são suportadas desde a 1.0).
+  - Verifique com `claude --version`. Para instalar/atualizar, siga a [documentação oficial do Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview).
+- Um arquivo **`voice-guide.md`** já pronto (gerado pelo pipeline em `pipeline/`). Se ainda não tem, use a instalação automática — ela cria o guide do zero.
+- **`git`** (opcional) apenas se você for clonar este repositório em vez de copiar os arquivos da skill à mão.
+
+### Onde ficam os arquivos (path da pasta de config por OS)
+
+O Claude Code guarda a configuração do usuário na pasta `~/.claude`. O que muda entre sistemas é como o `~` (home) é resolvido:
+
+| Sistema | Pasta de config do Claude Code | Skill instalada em |
+|---|---|---|
+| **macOS** | `~/.claude` → `/Users/SEU_USUARIO/.claude` | `~/.claude/skills/voice-apply/` |
+| **Linux** | `~/.claude` → `/home/SEU_USUARIO/.claude` | `~/.claude/skills/voice-apply/` |
+| **Windows** | `%USERPROFILE%\.claude` → `C:\Users\SEU_USUARIO\.claude` | `%USERPROFILE%\.claude\skills\voice-apply\` |
+
+No macOS e no Linux o caminho é idêntico (`~/.claude/...`). No Windows, o equivalente de `~` é `%USERPROFILE%` (normalmente `C:\Users\SEU_USUARIO`), e o separador de pasta é `\` em vez de `/`.
+
+> **Dica (Windows):** se você usa o Claude Code dentro do **WSL** (Windows Subsystem for Linux), siga as instruções de **Linux** — dentro do WSL o `~` é o home do Linux (`/home/SEU_USUARIO`), não o `C:\Users`.
+
+### Passo a passo
+
+A skill é composta por dois arquivos que ficam em `skills/voice-apply/` dentro da sua pasta `.claude`:
+
+- `SKILL.md` — a definição da skill (copie de [`skill/voice-apply/SKILL.md`](skill/voice-apply/SKILL.md)).
+- `voice-guide-path.txt` — uma linha com o **caminho absoluto** do seu `voice-guide.md`.
+
+Além disso, coloque o seu `voice-guide.md` num lugar fixo (o padrão é a raiz da pasta `.claude`).
+
+#### macOS / Linux
+
+```bash
+# 1. Crie a pasta da skill
+mkdir -p ~/.claude/skills/voice-apply
+
+# 2. Coloque seu guide no lugar padrão
+cp /caminho/para/seu/voice-guide.md ~/.claude/voice-guide.md
+
+# 3. Copie a definição da skill (deste repositório, ou baixe direto)
+cp skill/voice-apply/SKILL.md ~/.claude/skills/voice-apply/SKILL.md
+#   (sem o repo clonado, baixe direto:)
+#   curl -fsSL https://raw.githubusercontent.com/expertintegrado/voice-guide/main/skill/voice-apply/SKILL.md \
+#     -o ~/.claude/skills/voice-apply/SKILL.md
+
+# 4. Aponte a skill para o seu guide (caminho absoluto)
+echo "$HOME/.claude/voice-guide.md" > ~/.claude/skills/voice-apply/voice-guide-path.txt
+```
+
+#### Windows (PowerShell)
+
+```powershell
+# 1. Crie a pasta da skill
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills\voice-apply" | Out-Null
+
+# 2. Coloque seu guide no lugar padrão
+Copy-Item "C:\caminho\para\seu\voice-guide.md" "$env:USERPROFILE\.claude\voice-guide.md"
+
+# 3. Baixe a definição da skill
+Invoke-WebRequest `
+  -Uri "https://raw.githubusercontent.com/expertintegrado/voice-guide/main/skill/voice-apply/SKILL.md" `
+  -OutFile "$env:USERPROFILE\.claude\skills\voice-apply\SKILL.md"
+
+# 4. Aponte a skill para o seu guide (caminho absoluto do Windows)
+Set-Content -Path "$env:USERPROFILE\.claude\skills\voice-apply\voice-guide-path.txt" `
+  -Value "$env:USERPROFILE\.claude\voice-guide.md"
+```
+
+> **Conteúdo do `voice-guide-path.txt`:** é uma única linha com o caminho absoluto do seu guide.
+> No macOS/Linux: `/Users/SEU_USUARIO/.claude/voice-guide.md` ou `/home/SEU_USUARIO/.claude/voice-guide.md`.
+> No Windows: `C:\Users\SEU_USUARIO\.claude\voice-guide.md`.
+> Se esse arquivo faltar ou estiver vazio, a skill tenta os fallbacks nesta ordem: `~/.claude/voice-guide.md`, depois `~/voice-guide.md`, depois `./voice-guide.md` (a própria pasta da skill).
+
+### Ativar e testar
+
+1. **Feche e reabra o Claude Code** — skills são carregadas no início de cada sessão.
+2. Rode `claude` na pasta de qualquer projeto (a skill é global; vale em todos).
+3. Teste com: `Responde no meu tom: [qualquer mensagem]`. A skill `voice-apply` deve disparar, ler seu Voice Guide e redigir aplicando as suas regras.
+
+> **Claude Desktop (com plugin de skills):** a pasta muda. No macOS é `~/Library/Application Support/Claude/skills/voice-apply/`; no Windows, `%APPDATA%\Claude\skills\voice-apply\` (`C:\Users\SEU_USUARIO\AppData\Roaming\Claude\skills\voice-apply\`). Depois de copiar, **reinicie o Claude Desktop**.
+
+---
+
 ## Por que isso importa
 
 CEO, especialista, dono de empresa, produtor de conteúdo: você não escala 1:1. A sua **voz** precisa escalar. Hoje, com IA, dá pra documentar o seu jeito de comunicar (léxico, ritmo, anti-padrões) e fazer o modelo simular isso de forma consistente — em vez de cada agente, automação ou copywriter inventar do zero e desalinhar.
