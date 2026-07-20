@@ -71,6 +71,31 @@ Voice Guide é o documento que faz esse trabalho.
 
 ---
 
+## Versionamento
+
+Este método segue [versionamento semântico](https://semver.org/lang/pt-BR/) (`MAJOR.MINOR.PATCH`). A versão atual fica no arquivo [`VERSION`](VERSION) na raiz do repositório (fonte única da verdade).
+
+Convenção para este projeto (que é conteúdo, não código):
+
+- **MAJOR** — mudança conceitual no método que quebra guides/instalações antigas (ex.: v1 → v2, quando entrou higiene de corpus + motor retórico + validação em 2 camadas).
+- **MINOR** — nova etapa, template ou capacidade compatível com o que já existe (ex.: novo arquivo em `pipeline/`, suporte a uma nova plataforma no `ONBOARDING.md`).
+- **PATCH** — correções e ajustes editoriais que não mudam o fluxo (typos, links, refino de texto).
+
+### Como publicar uma nova versão
+
+1. Atualize o número em [`VERSION`](VERSION) e, se aplicável, o campo `**Versao:**` no rodapé de [`skill/voice-apply/SKILL.md`](skill/voice-apply/SKILL.md) (mantenha os dois em sincronia).
+2. Faça commit com a mudança de versão.
+3. Crie a tag anotada e o release no GitHub:
+
+   ```bash
+   git tag -a v2.0.0 -m "Voice Guide 2.0.0"
+   git push origin v2.0.0
+   # opcional, cria o Release na interface do GitHub:
+   gh release create v2.0.0 --title "Voice Guide 2.0.0" --notes "Resumo das mudanças"
+   ```
+
+> A tag deve usar o prefixo `v` (`v2.0.0`) e bater com o conteúdo de `VERSION`. Como o `ONBOARDING.md` busca os arquivos por `{BASE_URL}` apontando para `main`, a instalação automática sempre usa a última versão publicada; use as tags para congelar/rastrear versões específicas.
+
 ## Glossário rápido
 
 - **Voice Guide**: documento que descreve como UMA PESSOA comunica (fingerprint individual)

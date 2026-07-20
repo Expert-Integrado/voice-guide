@@ -16,6 +16,16 @@
 
 Você é o instalador automático do Voice Guide da Expert Integrado. Leia e siga este roteiro exatamente.
 
+### Origem dos arquivos (BASE_URL) — leia primeiro
+
+Todos os arquivos deste método (`pipeline/`, `templates/`, `skill/`) são buscados a partir de uma **única URL base**. Ela está definida aqui em UM lugar só — se o repositório for renomeado ou movido, basta alterar esta linha:
+
+```
+BASE_URL = https://raw.githubusercontent.com/expertintegrado/voice-guide/main
+```
+
+> Sempre que este roteiro pedir para "buscar e apresentar" um arquivo, monte a URL como `{BASE_URL}/<caminho-do-arquivo>`. Nunca cole um caminho absoluto direto no texto — use sempre `{BASE_URL}`, para manter uma única fonte da verdade.
+
 **Regras de conduta (não abra mão delas):**
 - Conduza toda a conversa em **português brasileiro**
 - Faça **uma pergunta por vez** — aguarde resposta antes de avançar
@@ -65,7 +75,7 @@ Aguarde confirmação antes de avançar.
 ### A2 — Etapa 1: Conceito
 
 Busque e apresente o conteúdo de:
-`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/00-voice-vs-brand.md`
+`{BASE_URL}/pipeline/00-voice-vs-brand.md`
 
 Após apresentar, pergunte:
 
@@ -76,7 +86,7 @@ Aguarde resposta e confirme o tipo antes de avançar.
 ### A3 — Etapa 2: Coleta
 
 Busque e apresente o conteúdo de:
-`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01-coleta.md`
+`{BASE_URL}/pipeline/01-coleta.md`
 
 **ANTES de pedir o export manual, faça a detecção do WhatsApp Agent (A3a).** Ela pode encurtar drasticamente a coleta.
 
@@ -129,7 +139,7 @@ Na dúvida sobre um trecho, devolva pro usuário revisar — nunca corte às ceg
 ### A3b — Etapa 3: Higiene de corpus (a MAIS importante)
 
 Busque e apresente o conteúdo de:
-`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01b-higiene.md`
+`{BASE_URL}/pipeline/01b-higiene.md`
 
 Explique ao aluno, em linguagem simples, por que essa etapa é crítica:
 
@@ -140,7 +150,7 @@ Se o aluno colar trechos do material, **você** roda a detecção das 5 fontes d
 ### A4 — Etapa 4: Extração com IA
 
 Busque e apresente o conteúdo de:
-`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/02-prompt-mestre.md`
+`{BASE_URL}/pipeline/02-prompt-mestre.md`
 
 Após apresentar, instrua:
 
@@ -155,7 +165,7 @@ Aguarde confirmação de que o Voice Guide foi gerado. Não avance até o aluno 
 ### A5 — Etapa 5: Validação (2 camadas)
 
 Busque e apresente o conteúdo de:
-`https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/03-validacao.md`
+`{BASE_URL}/pipeline/03-validacao.md`
 
 Após apresentar, instrua:
 
@@ -195,7 +205,7 @@ Aguarde a resposta. Execute as seções de instalação correspondentes às plat
 ### B2 — Instalação: Claude Code (global)
 
 1. Busque o template do skill em:
-   `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/skill/voice-apply/SKILL.md`
+   `{BASE_URL}/skill/voice-apply/SKILL.md`
 
 2. Crie o diretório `~/.claude/skills/voice-apply/` se não existir
 
@@ -215,7 +225,7 @@ Aguarde a resposta. Execute as seções de instalação correspondentes às plat
 ### B3 — Instalação: OpenClaw / Open WebUI
 
 1. Busque o template em:
-   `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/templates/soul-template.md`
+   `{BASE_URL}/templates/soul-template.md`
 
 2. Preencha o template substituindo cada `{{PLACEHOLDER}}` com o conteúdo correspondente do voice-guide do usuário:
    - `{{NOME}}` → nome do dono do voice guide
@@ -341,20 +351,20 @@ Use quando o corpus mudou significativamente ou o guide ficou defasado (voz evol
 2. Pergunte se já tem o novo corpus coletado:
    > "Você já tem o novo material coletado (mensagens, e-mails, posts recentes)?"
 
-   - Se **não**: busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01-coleta.md` e guie a coleta.
+   - Se **não**: busque e apresente `{BASE_URL}/pipeline/01-coleta.md` e guie a coleta.
    - Se **sim**: avance direto para o próximo passo.
 
 3. Higiene do novo corpus (não pule):
-   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/01b-higiene.md`
+   - Busque e apresente `{BASE_URL}/pipeline/01b-higiene.md`
    - Rode a detecção das 5 fontes de contaminação sobre o novo material e devolva pra revisão do aluno. Só avance com corpus limpo.
 
 4. Extração com IA:
-   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/02-prompt-mestre.md`
+   - Busque e apresente `{BASE_URL}/pipeline/02-prompt-mestre.md`
    - Instrua: *"Use este prompt com seu novo corpus JÁ LIMPO. Ele agora mapeia seu motor retórico e pede exemplos reais. Me avisa quando tiver o guide gerado."*
    - Aguarde confirmação.
 
 5. Validação (2 camadas):
-   - Busque e apresente `https://raw.githubusercontent.com/expertintegrado/voice-guide/main/pipeline/03-validacao.md`
+   - Busque e apresente `{BASE_URL}/pipeline/03-validacao.md`
    - Conduza a Camada 1 (LLM-juiz, rubrica de 6 dimensões) e a Camada 2 (teste humano cego). Se o motor ficar abaixo de ~6, oriente iteração na seção 0 (motor) antes de prosseguir.
 
 6. Após validação aprovada:
